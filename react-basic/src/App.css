@@ -1,5 +1,19 @@
 .App {
-  text-align: center;
+  
+}
+
+.list {
+  display: block;
+  border-bottom: 1px solid gray;
+  margin-left:20px;
+}
+
+.black-nav {
+  display: flex;
+  background: black;
+  width:100%;
+  color:white;
+  padding-left:20px;
 }
 
 .App-logo {
