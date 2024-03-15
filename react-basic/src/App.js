@@ -1,6 +1,9 @@
 import {
   useEffect,
-  useRef
+  useRef,
+  useContext,
+  createContext,
+  useState
 } from "react";
 
 export default App;
@@ -362,38 +365,293 @@ function App() {
 //   )
 // }
 
-function Profile({ profile }) {
-  // props에 접근
-  console.log(profile);
+// function Profile({ profile }) {
+//   // props에 접근
+//   console.log(profile);
 
-  return (
-    <section>
-      <h3>{profile.username}</h3>
-      <p>{profile.bio}</p>
-      <ul>
-        <li>게시물 {profile.posts}</li>
-        <li>팔로워 {profile.followers}</li>
-        <li>팔로잉 {profile.following}</li>
-      </ul>
-    </section>
-  )
-}
+//   return (
+//     <section>
+//       <h3>{profile.username}</h3>
+//       <p>{profile.bio}</p>
+//       <ul>
+//         <li>게시물 {profile.posts}</li>
+//         <li>팔로워 {profile.followers}</li>
+//         <li>팔로잉 {profile.following}</li>
+//       </ul>
+//     </section>
+//   )
+// }
+
+// function Snippet() {
+//   const DATA = {
+//     username: "예수님",
+//     bio: "네 이웃을 사랑하라!",
+//     posts: 5,
+//     followers: 10,
+//     following: 20
+//   }
+
+//   return (
+//     <>
+//       <h1>Instagram.com</h1>
+
+//       {/* props: 다른 컴포넌트에 전달하는 데이터 */}
+//       <Profile profile={DATA} />
+//     </>
+//   )
+// }
+
+/*
+  Q. props
+  뷰를 참고하여 Content 컴포넌트를 완성해보세요.
+  (Content는 DATA를 사용하여 뷰를 생성합니다.)
+*/
+
+// function Content( {video} ) {
+//   return (
+//     <section>
+//       <h3>{video.title}</h3>
+//       <img src={video.source} width="200" />
+//       <p>
+//         {video.views} views
+//       </p>
+//     </section>
+//   )
+// }
+
+// function Snippet() {
+
+//   const DATA = {
+//   title: "고양이는 액체일까?",
+//   author: "who",
+//   source: "https://img.sbs.co.kr/newimg/news/20180607/201190562_500.jpg",
+//   views: 99,
+// }
+
+// return (
+//   <>
+//   <h1>YouTube.com</h1>
+
+//   <Content />
+
+//   <h3>댓글</h3>
+//   <ul>
+//     <li>유치하게 등수는 ㅉㅉ 3빠</li>
+//     <li>2빠</li>
+//     <li>1빠</li>
+//   </ul>
+//   </>
+//   )
+// }
+
+/*
+  컴포넌트 트리
+
+  컴포넌트를 트리구조로 만들 수 있다
+  라우터 등의 기능을 구현할 때
+  적합하다
+*/
+
+// // children props는 자식 컴포넌트를 의미한다
+// function Layout({ children }) {
+//   return (
+//     <>
+//       <nav>
+//         <ul>
+//           <li>Home</li>
+//           <li>About</li>
+//           <li>Posts</li>
+//         </ul>
+//       </nav>
+
+//       <main>
+//         {/* Article 컴포넌트 */}
+//         {children}
+//       </main>
+//     </>
+//   )
+// }
+
+// function Article() {
+//   return (
+//     <section>
+//       <h1>First post</h1>
+//       <i>January 1, 2024</i>
+//       <p>..</p>
+//     </section>
+//   )
+//   }
+
+// // 메인 - 컴포넌트들이 모이는 곳
+// function Snippet() {
+//   return (
+//     <Layout>
+//       <Article />
+//     </Layout>
+//   )
+// }
+
+/*
+  트리구조에서 데이터 전달하기
+
+  트리구조에서 하위 컴포넌트에 데이터를 전달할 수 있다.
+  예) 인증 구현
+*/
+
+// // context 선언
+// const AuthContext = createContext();
+
+// // 인증(Authentication) 처리
+// function AuthProvider({ children }) {
+//   //지역변수 - 유저 데이터
+//   const value = { username: "bunny" };
+
+//   return (
+//     // context 컴포넌트에 value 객체를 전달한다
+//     <AuthContext.Provider value={value}>
+//       {children}
+//     </AuthContext.Provider>
+//   )
+// }
+
+// function Layout({ children }) {
+
+//   // value 객체에 접근하기
+//   const auth = useContext(AuthContext);
+
+//   console.log(auth);
+
+//   return (
+//     <>
+//       <nav>
+//         <ul>
+//           <li>Home</li>
+//           <li>About</li>
+//           <li>Posts</li>
+//         </ul>
+//       </nav>
+
+//       {/* 인증 상태 구현 */}
+//       {auth ? (
+//         <p>안녕하세요, {auth.username}님!</p>
+//       ) : (
+//         <p> 로그인하세요.</p>
+//       )}
+
+//       <main>
+//         {/* Article 컴포넌트 */}
+//         {children}
+//       </main>
+//     </>
+//   )
+// }
+
+// function Article() {
+//   return (
+//     <section>
+//       <h1>First post</h1>
+//       <i>January 1, 2024</i>
+//       <p>..</p>
+//     </section>
+//   )
+//   }
+
+// // 메인 - 컴포넌트들이 모이는 곳
+// function Snippet() {
+//   return (
+//     <AuthProvider>
+//       <Layout>
+//         <Article />
+//       </Layout>
+//     </AuthProvider>
+//   )
+// }
+
+/*
+  리액트에서 이벤트 처리 방법
+*/
+
+// function Snippet() {
+//   function handleClick() {
+//     alert("lol");
+//   }
+
+//   return (
+//     <button onClick={handleClick}>
+//       클릭
+//     </button>
+//   )
+// }
+
+/*
+  뷰 업데이트
+
+  1. 예시
+  2. 동적 스타일링
+*/
+
+/*
+  예시
+*/
+
+/*
+  useState Hook
+
+  const [state, setState] = useState(initialValue)
+
+  1. state: 컴포넌트 내의 변수
+  2. setState(newState): state를 newState로 업데이트하는 함수
+  3. initialValue: state의 초기값
+*/
+// function Snippet() {
+//   const [count, setCount] = useState(0);
+
+//   function handleClick() {
+//     // 현재 count를 1 증가시킨다
+//     setCount(count + 1);
+//   }
+
+//   return (
+//     <>
+//       <p>count: {count}</p>
+//       <button onClick={handleClick}>+</button>
+//     </>
+//   )
+// }
+
+/*
+  동적 스타일링
+*/
+
+// function Snippet() {
+//   // 리액트의 꽃
+//   const [liked, setLiked]= useState(false);
+
+//   function handleClick() {
+//     setLiked(!liked);
+//   }
+
+//   return (
+//     <>
+//       <h1>좋아요 버튼</h1>
+//       <svg style={{width: "2rem", fill: liked ? "#e00" : "#000"}}
+//       onClick={handleClick}
+//       xmlns="http://www.w3.org/2000/svg" 
+//       viewBox="0 0 512 512">
+//         <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/>
+//       </svg>
+//     </>
+//   )
+// }
 
 function Snippet() {
-  const DATA = {
-    username: "예수님",
-    bio: "네 이웃을 사랑하라!",
-    posts: 5,
-    followers: 10,
-    following: 20
-  }
+  const [subscribed, setSubscribed] = useState(false);
 
   return (
     <>
-      <h1>Instagram.com</h1>
-
-      {/* props: 다른 컴포넌트에 전달하는 데이터 */}
-      <Profile profile={DATA} />
+      <h1>Subscribe button</h1>
+      <button onClick={() => setSubscribed(!subscribed)}>
+      </button>
     </>
   )
 }
