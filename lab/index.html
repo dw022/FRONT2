@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <!-- <h1 class="text-7xl my-8">Lab</h1>
+
+  <div class="bg-gray-400 h-[500px] flex justify-center items-end">
+    <div id="item" class="w-full max-w-screen-sm h-[400px] bg-black relative top-20"></div>
+  </div> -->
+
+    <!-- <h1 class="w-[100%]">CUSTOM</h1>
+
+
+  <h1 class="text-4xl my-4">Lab</h1>
+
+  <div class="container border relative">
+    <p id="item1" class="p-4 w-[500px] bg-black text-white absolute top-0 left-0">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+    </p>
+    <p 
+      id="item2" 
+      class="w-[500px] p-4 bg-red-400 text-white absolute top-0 left-0"
+      style="transform: translateX(500px)"
+    >
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+    </p>
+  </div>
+
+  <script>
+    var x1 = 0;
+    var x2 = 500;
+
+    setInterval(f, 10);
+    
+    function f() {
+      item1.style.transform = `translateX(${--x1}px)`;
+      item2.style.transform = `translateX(${--x2}px)`;
+  
+      if (x1 < -500) {
+        x1 = 500;
+      }
+  
+      if (x2 < -500) {
+        x2 = 500;
+      }
+    }
+  </script> -->
+
+    <!-- <h1 class="text-4xl my-4">Lab</h1>
+
+  <div id="container" class="border border-dashed border-black flex overflow-auto">
+    <div class="w-[200px] h-[200px] shrink-0 bg-gray-200">item1</div>
+    <div class="w-[200px] h-[200px] shrink-0 bg-gray-200">item2</div>
+    <div class="w-[200px] h-[200px] shrink-0 bg-gray-200">item3</div>
+    <div class="w-[200px] h-[200px] shrink-0 bg-gray-200">item4</div>
+    <div class="w-[200px] h-[200px] shrink-0 bg-gray-200">item5</div>
+  </div>
+
+  <button class="p-2 border my-2" onclick="f(-1)">Prev</button>
+  <button class="p-2 border my-2" onclick="f(1)">Next</button>
+
+  <script>
+    var index = 0;
+    var left = 0;
+    var w = 200;
+
+    function f(data) {
+      left = data * w;
+
+      console.log(left);
+
+      container.scrollBy({
+        left: left,
+        behavior: "smooth"
+      });
+    }
+  </script> -->
+
+    <!-- <div id="container" class="fixed">
+    <div class="w-screen h-screen inset-0 bg-blue-400 text-white font-semibold p-4" style="font-size: 4vh;">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus eligendi maiores explicabo distinctio ad, corrupti culpa amet ducimus accusantium porro consequuntur ratione corporis repellat necessitatibus vitae vero tenetur quas similique.
+    </div>
+    <div class="w-screen h-screen inset-0 bg-yellow-400 text-white font-semibold p-4" style="font-size: 4vh;">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus eligendi maiores explicabo distinctio ad, corrupti culpa amet ducimus accusantium porro consequuntur ratione corporis repellat necessitatibus vitae vero tenetur quas similique.
+    </div>
+    <div class="w-screen h-screen inset-0 bg-red-800 text-white font-semibold p-4" style="font-size: 4vh;">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus eligendi maiores explicabo distinctio ad, corrupti culpa amet ducimus accusantium porro consequuntur ratione corporis repellat necessitatibus vitae vero tenetur quas similique.
+    </div>
+  </div>
+
+
+  <script>
+    var y1, y2 = 0;
+    var point = 100;
+    var TOP = 0;
+
+    addEventListener("touchstart", (e) => {
+      y1 = e.touches[0].clientY;
+    })
+    
+    addEventListener("touchmove", (e) => {
+      y2 = e.touches[0].clientY;
+
+      container.style.transform = `translateY(${TOP + (y2 - y1)}px)`;
+    })
+
+    addEventListener("touchend", (e) => {
+      console.log(y2 - y1);
+
+      if (y2 - y1 < -point) {
+        TOP -= innerHeight;
+      }
+
+      if (y2 - y1 > point) {
+        TOP += innerHeight;
+      }
+
+      container.style.transform = `translateY(${TOP}px)`;
+    })
+  </script> -->
+
+    <!-- <div id="container" class="flex fixed">
+    <div class="w-screen h-screen inset-0 bg-blue-400 text-white font-semibold p-4" style="font-size: 4vh;">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus eligendi maiores explicabo distinctio ad, corrupti culpa amet ducimus accusantium porro consequuntur ratione corporis repellat necessitatibus vitae vero tenetur quas similique.
+    </div>
+    <div class="w-screen h-screen inset-0 bg-yellow-400 text-white font-semibold p-4" style="font-size: 4vh;">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus eligendi maiores explicabo distinctio ad, corrupti culpa amet ducimus accusantium porro consequuntur ratione corporis repellat necessitatibus vitae vero tenetur quas similique.
+    </div>
+    <div class="w-screen h-screen inset-0 bg-red-800 text-white font-semibold p-4" style="font-size: 4vh;">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus eligendi maiores explicabo distinctio ad, corrupti culpa amet ducimus accusantium porro consequuntur ratione corporis repellat necessitatibus vitae vero tenetur quas similique.
+    </div>
+  </div>
+
+
+  <script>
+    var clientX1, clientX2 = 0;
+    var point = 100;
+    var x = 0;
+
+    addEventListener("touchstart", (e) => {
+      clientX1 = e.touches[0].clientX;
+    })
+    
+    addEventListener("touchmove", (e) => {
+      clientX2 = e.touches[0].clientX;
+
+      move(x + (clientX2 - clientX1));
+    })
+
+    addEventListener("touchend", (e) => {
+      console.log(clientX2 - clientX1);
+
+      if (clientX2 - clientX1 < -point) {
+        x -= innerWidth;
+      }
+
+      if (clientX2 - clientX1 > point) {
+        x += innerWidth;
+      }
+
+      move(x)
+    })
+
+    function move(x) {
+      container.style.transform = `translateX(${x}px)`
+    }
+  </script> -->
+
+    <!-- <h1 class="text-4xl my-8">Lab</h1>
+
+  <div class="border border-dashed border-black relative h-[200px]">
+    <div id="container" class="flex absolute transition-all gap-[50px]">
+      <div class="item w-[300px] h-[200px] bg-gray-400">#1</div>
+      <div class="item w-[300px] h-[200px] bg-gray-400">#2</div>
+      <div class="item w-[300px] h-[200px] bg-gray-400">#3</div>
+      <div class="item w-[300px] h-[200px] bg-gray-400">#4</div>
+      <div class="item w-[300px] h-[200px] bg-gray-400">#5</div>
+    </div>
+  </div>
+
+  <div class="m-4">
+    <button class="p-2 bg-gray-200" onclick="f(-1)">prev</button>
+    <button class="p-2 bg-gray-200" onclick="f(1)">next</button>
+  </div>
+
+  
+  <script>
+    var x = 100;
+
+    container.style.transform = `translateX(${x}px)`;
+
+    function f(data) {
+  
+      x += -(data * 350);
+
+      container.style.transform = `translateX(${x}px)`;
+    }
+  </script> -->
+
+    <!-- <style>
+    #earth {
+      box-shadow: 0 0 20px 0px rgb(96 165 250) inset;
+    }
+  </style>
+
+  <div id="universe" class="w-screen h-screen bg-black flex justify-center items-center">
+    <div id="earth" class="w-[200px] h-[200px] rounded-full"></div>
+  </div> -->
+
+    <script>
+      var r = true;
+
+      var w = innerWidth;
+      var h = w * (2 / 3);
+
+      function rd() {
+        return Math.ceil(Math.random() * 1000);
+      }
+
+      for (var i = 1; i <= 12; i++) {
+        var container = document.createElement("div");
+
+        container.className += "grid gap-1 grid-rows-2 grid-cols-3 mb-1";
+        container.style.width = w + "px";
+        container.style.height = h + "px";
+
+        // no span
+        if (i % 2 == 0) {
+          for (var j = 1; j <= 6; j++) {
+            var img = document.createElement("img");
+
+            img.src = `https://source.unsplash.com/random/sig=${rd()}`;
+            img.className += "w-full h-full object-cover";
+
+            container.appendChild(img);
+          }
+        } else {
+          // span
+          for (var k = 1; k <= 3; k++) {
+            var img = document.createElement("img");
+
+            img.src = `https://source.unsplash.com/random/sig=${rd()}`;
+            img.className += "w-full h-full object-cover";
+
+            if (r) {
+              if (k == 2) {
+                img.className += " row-span-2 col-span-2";
+              }
+            } else {
+              if (k == 1) {
+                img.className += " row-span-2 col-span-2";
+              }
+            }
+
+            container.appendChild(img);
+          }
+
+          r = !r;
+        }
+
+        document.body.appendChild(container);
+      }
+    </script>
+  </body>
+</html>
